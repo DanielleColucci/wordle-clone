@@ -34,13 +34,17 @@ function init() {
 }
 
 function handleKeyPress(evt) {
-  const key = evt.key.toLowerCase()
-  // check if key is letter
-  if (key >= 97 && key <= 122) {
-    // add letter to currentGuess
-  } else if (key === 'backspace') {
-    // remove letter from currentGuess 
-  } else if (key === 'enter') {
-    // handle word attempt 
+  // check if difficulty has been selected
+  if (secretWord) {
+    const key = evt.key.toLowerCase()
+
+    // check if key is single letter and lastGuess is no more than 5 letters
+    if (key.length === 1 && /[a-z]/i.test(key) && lastGuess.length < 5) {
+      lastGuess += key
+    } else if (key === 'backspace') {
+      lastGuess = lastGuess.slice(0, -1)
+    } else if (key === 'enter') {
+      // handle word attempt 
+    }
   }
 } 
