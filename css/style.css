@@ -50,6 +50,7 @@ main, #reset-button {
 }
 
 .sqr {
+  color: whitesmoke;
   border: 1px solid white;
   display: flex;
   justify-content: center;

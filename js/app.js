@@ -10,7 +10,7 @@ const board = [
 ]
 
 /*------------------------------- Variables -------------------------------*/
-let difficulty, secretWord, winner, lastGuess, currentRow, currentLetter
+let difficulty, secretWord, winner, currentGuess, currentRow, currentLetter
 
 /*----------------------- Cached Element Referenes ------------------------*/
 const diffBtnEls = document.getElementById('difficulties')
@@ -39,7 +39,7 @@ function chooseDifficulty(evt) {
 function init() {
   secretWord = getWord(difficulty)
   winner = false 
-  lastGuess = ''
+  currentGuess = ''
   currentRow = 0
   currentLetter = 0
   mainEl.style.display = 'block';
@@ -51,24 +51,45 @@ function handleKeyPress(evt) {
     const key = evt.key.toUpperCase()
 
     // check if key is single letter and lastGuess is no more than 5 letters
-    if (key.length === 1 && /[A-Z]/i.test(key) && lastGuess.length < 5) {
-      lastGuess += key
-      board[currentRow + currentLetter] = key
-      currentLetter++
-      render()
-      // put key in appropriate box
+    if (key.length === 1 && /[A-Z]/i.test(key) && currentLetter < 5) {
+      placeLetter(evt)
     } else if (key === 'BACKSPACE') {
-      lastGuess = lastGuess.slice(0, -1)
-      currentLetter--
-      board[currentRow + currentLetter] = null
-      render()
-      // remove key from appropriate box 
+      placeLetter(evt)
     } else if (key === 'ENTER') {
-      // handle word attempt 
+      handleGuess()
     }
   }
+  updateBoard()
 } 
 
-function render() {
+function placeLetter(evt) {
+  const key = evt.key.toUpperCase()
+  if (key === 'BACKSPACE') {
+    currentGuess.slice(0, -1) 
+    currentLetter--
+    board[currentRow + currentLetter] = null
+  } else {
+    currentGuess += key
+    board[currentRow + currentLetter] = key
+    currentLetter++
+  }
+}
+
+function updateBoard() {
   board.forEach((sqrText, idx) => sqrEls[idx].textContent = sqrText)
+}
+
+function handleGuess() {
+  if (currentLetter === 5 && checkWord(currentGuess)) {
+    checkWinner()
+    currentRow++
+  } else {
+    // invalid guess animation 
+  }
+}
+
+function checkWinner() {
+  if (currentGuess === secretWord && currentRow <= 5) {
+    winner = true
+  }
 }
