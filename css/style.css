@@ -28,6 +28,10 @@ h2 {
   padding: 0 1vmin;
 }
 
+main, #reset-button {
+  display: none;
+}
+
 .board {
   display: flex;
   flex-direction: column;
