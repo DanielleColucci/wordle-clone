@@ -43,4 +43,4 @@ function handleKeyPress(evt) {
   } else if (key === 'enter') {
     // handle word attempt 
   }
-}
+} 
