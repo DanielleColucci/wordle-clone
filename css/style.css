@@ -1,0 +1,79 @@
+body {
+  background-color: gray;
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  /* overflow-y: hidden; */
+}
+
+h1, h2 {
+  color: whitesmoke;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+}
+
+#difficulties {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vmin;
+  padding: 2vmin;
+}
+
+.mode {
+  font-size: 3vmin;
+  padding: 0 1vmin;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 41vmin;
+  font-size: 5vmin;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 35vmin;
+}
+
+.sqr {
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6vmin;
+  width: 6vmin
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5vmin;
+  height: 19.5vmin;
+  margin: 5vmin;
+  font-size: 3vmin;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 0.5vmin
+}
+
+.key {
+  font-size: 2vmin;
+  height: 6vmin;
+  width: 5vmin; 
+}
+
+#enter, #delete {
+  width: max-content;
+}
