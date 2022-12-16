@@ -6,6 +6,7 @@ let difficulty, secretWord, winner, lastGuess, currentRow, currentLetter
 
 /*----------------------- Cached Element Referenes ------------------------*/
 const diffBtnEls = document.getElementById('difficulties')
+const messageEl = document.getElementById('message')
 const body = document.querySelector('body')
 const main = document.querySelector('main')
 const keyboardEls = document.getElementById('keyboard')
@@ -20,6 +21,8 @@ body.addEventListener('keydown', handleKeyPress)
 function chooseDifficulty(evt) {
   if (evt.target.className === 'mode') {
     difficulty = Number(evt.target.id[5])
+    diffBtnEls.style.display = 'none'
+    messageEl.innerText = ''
     init()
   }
 }

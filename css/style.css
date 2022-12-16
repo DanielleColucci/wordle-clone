@@ -39,6 +39,7 @@ main, #reset-button {
   justify-content: space-around;
   height: 41vmin;
   font-size: 5vmin;
+  margin: 3vmin;
 }
 
 .row {
@@ -62,8 +63,7 @@ main, #reset-button {
   flex-direction: column;
   align-items: center;
   gap: 0.5vmin;
-  height: 19.5vmin;
-  margin: 5vmin;
+  height: 19.5vmin; 
   font-size: 3vmin;
 }
 
