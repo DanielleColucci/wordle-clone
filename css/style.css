@@ -1,5 +1,5 @@
 body {
-  background-color: gray;
+  background-color: rgb(10, 10, 10);
   height: 100vh;
   box-sizing: border-box;
   font-family: sans-serif;
@@ -81,4 +81,16 @@ main, #reset-button {
 
 #enter, #backspace {
   width: max-content;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: goldenrod;
+}
+
+.grey {
+  background-color: gray;
 }

@@ -30,7 +30,7 @@ function chooseDifficulty(evt) {
 }
 
 function init() {
-  secretWord = 'preys'
+  secretWord = getWord(difficulty)
   winner = false 
   currentGuess = ''
   currentRow = 0
@@ -116,7 +116,8 @@ function updateColors() {
   let secretWordArr = secretWord.split('')
   lowerGuessArr.forEach(function(char, idx) {
     if (char === secretWordArr[idx]) {
-      sqrEls[currentRow + idx].style.backgroundColor = 'green'
+      sqrEls[currentRow + idx].classList.add('green')
+      document.getElementById(char).classList.add('green')
       lowerGuessArr[idx] = ' '
       secretWordArr[idx] = ' '
       console.log(lowerGuessArr, secretWordArr);
@@ -124,12 +125,14 @@ function updateColors() {
   })
   lowerGuessArr.forEach(function(char, idx) { 
     if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
-      sqrEls[currentRow + idx].style.backgroundColor = 'goldenrod'
+      sqrEls[currentRow + idx].classList.add('yellow')
+      document.getElementById(char).classList.add('yellow')
       lowerGuessArr[idx] = ' '
       secretWordArr[idx] = ' '
       console.log(lowerGuessArr, secretWordArr);
     } else if (char !== ' ') {
-      sqrEls[currentRow + idx].style.backgroundColor = 'black'
+      sqrEls[currentRow + idx].classList.add('grey')
+      document.getElementById(char).classList.add('grey')
     }
   })
 }
