@@ -13,7 +13,7 @@ const resetBtnEl = document.getElementById('reset-button')
 
 /*---------------------------- Event Listeners ----------------------------*/
 diffBtnEls.addEventListener('click', chooseDifficulty)
-
+body.addEventListener('keydown', handleKeyPress)
 
 /*------------------------------- Functions -------------------------------*/
 
@@ -31,4 +31,16 @@ function init() {
   currentRow = 1
   currentLetter = 0
   main.style.display = 'block';
+}
+
+function handleKeyPress(evt) {
+  const key = evt.key.toLowerCase()
+  // check if key is letter
+  if (key >= 97 && key <= 122) {
+    // add letter to currentGuess
+  } else if (key === 'backspace') {
+    // remove letter from currentGuess 
+  } else if (key === 'enter') {
+    // handle word attempt 
+  }
 }
