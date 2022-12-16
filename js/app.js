@@ -30,7 +30,7 @@ function chooseDifficulty(evt) {
 }
 
 function init() {
-  secretWord = getWord(difficulty)
+  secretWord = 'preys'
   winner = false 
   currentGuess = ''
   currentRow = 0
@@ -50,7 +50,7 @@ function updateBoard() {
 function updateMessage() {
   if (winner) {
     messageEl.style.visibility = 'visible'
-    messageEl.textContent = `You got it in ${currentRow}! Play again?`
+    messageEl.textContent = `You got it in ${currentRow / 5}! Play again?`
     diffBtnEls.style.display = 'flex'
   } else if (currentRow === 30) {
     messageEl.style.visibility = 'visible'
@@ -106,22 +106,30 @@ function handleGuess() {
 }
 
 function checkWinner() {
-  if (currentGuess === secretWord && currentRow <= 5) {
+  if (currentGuess.toLowerCase() === secretWord && currentRow <= 5) {
     winner = true
   }
 }
 
 function updateColors() {
-  for (let i = 0; i <= 4; i++) {
-    let lowerGuess = currentGuess.toLowerCase()
-    if (secretWord.includes(lowerGuess[i]) && secretWord.indexOf(lowerGuess[i]) === i) {
-      console.log('correct');
-      sqrEls[currentRow + i].style.backgroundColor = 'green'
-    } else if (secretWord.includes(lowerGuess[i]) && secretWord.indexOf(lowerGuess[i]) !== i) {
-      console.log('close');
-      sqrEls[currentRow + i].style.backgroundColor = 'yellow'
-    } else {
-      sqrEls[currentRow + i].style.backgroundColor = 'black'
+  let lowerGuessArr = currentGuess.toLowerCase().split('')
+  let secretWordArr = secretWord.split('')
+  lowerGuessArr.forEach(function(char, idx) {
+    if (char === secretWordArr[idx]) {
+      sqrEls[currentRow + idx].style.backgroundColor = 'green'
+      lowerGuessArr[idx] = ' '
+      secretWordArr[idx] = ' '
+      console.log(lowerGuessArr, secretWordArr);
     }
-  }
+  })
+  lowerGuessArr.forEach(function(char, idx) { 
+    if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
+      sqrEls[currentRow + idx].style.backgroundColor = 'goldenrod'
+      lowerGuessArr[idx] = ' '
+      secretWordArr[idx] = ' '
+      console.log(lowerGuessArr, secretWordArr);
+    } else if (char !== ' ') {
+      sqrEls[currentRow + idx].style.backgroundColor = 'black'
+    }
+  })
 }
