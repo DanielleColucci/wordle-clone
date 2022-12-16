@@ -71,11 +71,11 @@ function handleKeyPress(evt) {
   // check if game has been initialized 
   if (secretWord) {
     const key = evt.key.toUpperCase()
-    
+
     // check if key is single letter and lastGuess is no more than 5 letters
     if (key.length === 1 && /[A-Z]/i.test(key) && currentLetter < 5) {
       updateGuess(evt)
-    } else if (currentLetter !== 0 && key === 'BACKSPACE') {
+    } else if (key === 'BACKSPACE') {
       updateGuess(evt)
     } else if (currentLetter >= 4 && key === 'ENTER') {
       handleGuess()
@@ -87,8 +87,8 @@ function handleKeyPress(evt) {
 function updateGuess(evt) {
   const key = evt.key.toUpperCase()
   if (key === 'BACKSPACE') {
-    currentGuess.slice(0, -1) 
-    currentLetter--
+    currentGuess = currentGuess.slice(0, -1)
+    currentLetter = currentLetter > 0 ? --currentLetter : 0
     board[currentRow + currentLetter] = null
   } else {
     currentGuess += key
