@@ -59,7 +59,7 @@ function updateMessage() {
   if (winner) {
     messageEl.textContent = `You got it in ${currentRow}! Play again?`
     diffBtnEls.style.display = 'flex'
-  } else if (currentRow === 6) {
+  } else if (currentRow === 30) {
     messageEl.textContent = `The word was ${secretWord}. Play again?`
     diffBtnEls.style.display = 'flex'
   }
@@ -101,7 +101,6 @@ function handleGuess() {
     currentRow += 5
     currentLetter = 0
     currentGuess = ''
-    console.log(currentGuess);
   } else {
     // invalid guess animation 
     // invalid guess message 
