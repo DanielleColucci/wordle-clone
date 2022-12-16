@@ -77,7 +77,7 @@ function handleKeyPress(evt) {
       updateGuess(evt)
     } else if (key === 'BACKSPACE') {
       updateGuess(evt)
-    } else if (currentLetter >= 4 && key === 'ENTER') {
+    } else if (currentLetter >= 5 && key === 'ENTER') {
       handleGuess()
     }
   }
