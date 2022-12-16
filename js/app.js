@@ -1,13 +1,6 @@
 /*------------------------------- Constants -------------------------------*/
 import { getWord, checkWord } from "../data/words.js";
-const board = [
-  null, null, null, null, null, 
-  null, null, null, null, null, 
-  null, null, null, null, null, 
-  null, null, null, null, null, 
-  null, null, null, null, null, 
-  null, null, null, null, null
-]
+const board = Array(30).fill(null, 0)
 
 /*------------------------------- Variables -------------------------------*/
 let difficulty, secretWord, winner, currentGuess, currentRow, currentLetter
