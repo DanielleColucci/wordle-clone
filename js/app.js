@@ -69,7 +69,7 @@ function handleKeyPress(evt) {
   // check if difficulty has been selected
   if (secretWord) {
     const key = evt.key.toUpperCase()
-
+    
     // check if key is single letter and lastGuess is no more than 5 letters
     if (key.length === 1 && /[A-Z]/i.test(key) && currentLetter < 5) {
       updateGuess(evt)
@@ -96,11 +96,12 @@ function updateGuess(evt) {
 }
 
 function handleGuess() {
-  if (checkWord(currentGuess)) {
+  if (checkWord(currentGuess.toLowerCase())) {
     checkWinner()
-    currentRow++
+    currentRow += 5
     currentLetter = 0
     currentGuess = ''
+    console.log(currentGuess);
   } else {
     // invalid guess animation 
     // invalid guess message 
