@@ -11,6 +11,13 @@ const keyboardEls = document.getElementById('keyboard')
 const resetBtnEl = document.getElementById('reset-button')
 
 /*---------------------------- Event Listeners ----------------------------*/
+diffBtnEls.addEventListener('click', chooseDifficulty)
 
 
 /*------------------------------- Functions -------------------------------*/
+
+function chooseDifficulty(evt) {
+  if (evt.target.className === 'mode') {
+    difficulty = Number(evt.target.id[5])
+  }
+}
