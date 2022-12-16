@@ -56,7 +56,13 @@ function updateBoard() {
 }
 
 function updateMessage() {
-  
+  if (winner) {
+    messageEl.textContent = `You got it in ${currentRow}! Play again?`
+    diffBtnEls.style.display = 'flex'
+  } else if (currentRow === 6) {
+    messageEl.textContent = `The word was ${secretWord}. Play again?`
+    diffBtnEls.style.display = 'flex'
+  }
 }
 
 function handleKeyPress(evt) {
