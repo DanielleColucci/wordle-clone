@@ -45,7 +45,6 @@ function render() {
 
 function updateBoard() {
   board.forEach((sqrText, idx) => sqrEls[idx].textContent = sqrText)
-  // update colors for currentGuess only 
 }
 
 function updateMessage() {
@@ -92,6 +91,8 @@ function updateGuess(evt) {
 
 function handleGuess() {
   if (checkWord(currentGuess.toLowerCase())) {
+    updateBoard()
+    updateColors()
     checkWinner()
     currentRow += 5
     currentLetter = 0
@@ -107,5 +108,20 @@ function handleGuess() {
 function checkWinner() {
   if (currentGuess === secretWord && currentRow <= 5) {
     winner = true
+  }
+}
+
+function updateColors() {
+  for (let i = 0; i <= 4; i++) {
+    let lowerGuess = currentGuess.toLowerCase()
+    if (secretWord.includes(lowerGuess[i]) && secretWord.indexOf(lowerGuess[i]) === i) {
+      console.log('correct');
+      sqrEls[currentRow + i].style.backgroundColor = 'green'
+    } else if (secretWord.includes(lowerGuess[i]) && secretWord.indexOf(lowerGuess[i]) !== i) {
+      console.log('close');
+      sqrEls[currentRow + i].style.backgroundColor = 'yellow'
+    } else {
+      sqrEls[currentRow + i].style.backgroundColor = 'black'
+    }
   }
 }
