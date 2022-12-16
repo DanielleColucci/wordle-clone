@@ -31,7 +31,7 @@ function chooseDifficulty(evt) {
   if (evt.target.className === 'mode') {
     difficulty = Number(evt.target.id[5])
     diffBtnEls.style.display = 'none'
-    messageEl.textContent = ''
+    messageEl.style.visibility = 'hidden'
     init()
   }
 }
@@ -57,16 +57,18 @@ function updateBoard() {
 
 function updateMessage() {
   if (winner) {
+    messageEl.style.visibility = 'visible'
     messageEl.textContent = `You got it in ${currentRow}! Play again?`
     diffBtnEls.style.display = 'flex'
   } else if (currentRow === 30) {
+    messageEl.style.visibility = 'visible'
     messageEl.textContent = `The word was ${secretWord}. Play again?`
     diffBtnEls.style.display = 'flex'
   }
 }
 
 function handleKeyPress(evt) {
-  // check if difficulty has been selected
+  // check if game has been initialized 
   if (secretWord) {
     const key = evt.key.toUpperCase()
     
@@ -102,8 +104,10 @@ function handleGuess() {
     currentLetter = 0
     currentGuess = ''
   } else {
-    // invalid guess animation 
-    // invalid guess message 
+    messageEl.textContent = 'Invalid guess!'
+    messageEl.style.visibility = 'visible'
+    setTimeout(function() { messageEl.style.visibility = 'hidden' }, 1000)
+    // invalid guess animation
   }
 }
 
