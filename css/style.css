@@ -85,6 +85,15 @@ main, #reset-button {
   width: max-content;
 }
 
+#reset-button {
+  margin: 4vmin auto;
+  font-size: 2vmin;
+  height: 5vmin;
+  align-items: center;
+  justify-content: center;
+  width: 10vmin;
+}
+
 .green {
   background-color: green;
 }

@@ -16,6 +16,7 @@ const resetBtnEl = document.getElementById('reset-button')
 /*---------------------------- Event Listeners ----------------------------*/
 diffBtnEls.addEventListener('click', chooseDifficulty)
 bodyEl.addEventListener('keydown', handleKeyPress)
+resetBtnEl.addEventListener('click', init)
 
 /*------------------------------- Functions -------------------------------*/
 
@@ -29,14 +30,15 @@ function chooseDifficulty(evt) {
 }
 
 function init() {
-  secretWord = getWord(difficulty)
+  secretWord = 'bared'
   board = Array(30).fill(null, 0)
   winner = false 
   loss = false
   currentGuess = ''
   currentRow = 0
   currentLetter = 0
-  mainEl.style.display = 'block';
+  resetBtnEl.style.display = 'flex'
+  mainEl.style.display = 'block'
   updateBoard()
   resetColors()
 }
@@ -142,7 +144,7 @@ function updateColors() {
         sqrEls[currentRow * 5 + idx].classList.add('yellow')
         document.getElementById(char).classList.add('yellow')
         lowerGuessArr[idx] = ' '
-        secretWordArr[idx] = ' '
+        secretWordArr[secretWordArr.indexOf(char)] = ' '
       } else if (char !== ' ') {
         sqrEls[currentRow * 5 + idx].classList.add('grey')
         document.getElementById(char).classList.add('grey')
