@@ -106,8 +106,8 @@ function handleGuess() {
   } else {
     messageEl.textContent = 'Invalid guess!'
     messageEl.style.visibility = 'visible'
-    setTimeout(function() { messageEl.style.visibility = 'hidden' }, 1000)
-    // invalid guess animation
+    setTimeout(() => messageEl.style.visibility = 'hidden', 1000)
+    document.querySelector(`#row${currentRow + 1}`).style.animation = 'shake 0.5s linear'
   }
 }
 
