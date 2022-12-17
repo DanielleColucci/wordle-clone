@@ -30,7 +30,7 @@ function chooseDifficulty(evt) {
 }
 
 function init() {
-  secretWord = 'bared'
+  secretWord = getWord(difficulty)
   board = Array(30).fill(null, 0)
   winner = false 
   loss = false
@@ -57,11 +57,13 @@ function updateMessage() {
     messageEl.style.visibility = 'visible'
     messageEl.textContent = `You got it in ${currentRow}! Play again?`
     diffBtnEls.style.display = 'flex'
+    resetBtnEl.style.display = 'none'
   }
   if (loss) {
     messageEl.style.visibility = 'visible'
     messageEl.textContent = `The word was ${secretWord}. Play again?`
     diffBtnEls.style.display = 'flex'
+    resetBtnEl.style.display = 'none'
   }
 }
 
