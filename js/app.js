@@ -53,7 +53,7 @@ function updateBoard() {
 function updateMessage() {
   if (winner) {
     messageEl.style.visibility = 'visible'
-    messageEl.textContent = `You got it in ${currentRow / 5}! Play again?`
+    messageEl.textContent = `You got it in ${currentRow}! Play again?`
     diffBtnEls.style.display = 'flex'
   }
   if (loss) {
@@ -85,10 +85,10 @@ function updateGuess(evt) {
   if (key === 'BACKSPACE') {
     currentGuess = currentGuess.slice(0, -1)
     currentLetter = currentLetter > 0 ? --currentLetter : 0
-    board[currentRow + currentLetter] = null
+    board[currentRow * 5 + currentLetter] = null
   } else {
     currentGuess += key
-    board[currentRow + currentLetter] = key
+    board[currentRow * 5 + currentLetter] = key
     currentLetter++
   }
 }
@@ -98,9 +98,7 @@ function handleGuess() {
     updateColors()
     checkWinner()
     checkLoss()
-    currentRow += 5
-    currentLetter = 0
-    currentGuess = ''
+    updateRoundState()
   } else {
     messageEl.textContent = 'Invalid guess!'
     messageEl.style.visibility = 'visible'
@@ -110,15 +108,21 @@ function handleGuess() {
 }
 
 function checkWinner() {
-  if (currentGuess.toLowerCase() === secretWord && currentRow <= 25) {
+  if (currentGuess.toLowerCase() === secretWord && currentRow <= 5) {
     winner = true
   }
 }
 
 function checkLoss() {
-  if (currentGuess.toLowerCase() !== secretWord && currentRow >= 25) {
+  if (currentGuess.toLowerCase() !== secretWord && currentRow >= 5) {
     loss = true 
   }
+}
+
+function updateRoundState() {
+  currentRow++
+  currentLetter = 0
+  currentGuess = ''
 }
 
 function updateColors() {
@@ -127,7 +131,7 @@ function updateColors() {
     let secretWordArr = secretWord.split('')
     lowerGuessArr.forEach(function(char, idx) {
       if (char === secretWordArr[idx]) {
-        sqrEls[currentRow + idx].classList.add('green')
+        sqrEls[currentRow * 5 + idx].classList.add('green')
         document.getElementById(char).classList.add('green')
         lowerGuessArr[idx] = ' '
         secretWordArr[idx] = ' '
@@ -135,12 +139,12 @@ function updateColors() {
     })
     lowerGuessArr.forEach(function(char, idx) { 
       if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
-        sqrEls[currentRow + idx].classList.add('yellow')
+        sqrEls[currentRow * 5 + idx].classList.add('yellow')
         document.getElementById(char).classList.add('yellow')
         lowerGuessArr[idx] = ' '
         secretWordArr[idx] = ' '
       } else if (char !== ' ') {
-        sqrEls[currentRow + idx].classList.add('grey')
+        sqrEls[currentRow * 5 + idx].classList.add('grey')
         document.getElementById(char).classList.add('grey')
       }
     })
