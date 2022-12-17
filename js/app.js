@@ -17,6 +17,7 @@ const resetBtnEl = document.getElementById('reset-button')
 diffBtnEls.addEventListener('click', chooseDifficulty)
 bodyEl.addEventListener('keydown', handleKeyPress)
 resetBtnEl.addEventListener('click', init)
+keyboardEls.addEventListener('click', handleKeyPress)
 
 /*------------------------------- Functions -------------------------------*/
 
@@ -70,13 +71,11 @@ function updateMessage() {
 function handleKeyPress(evt) {
   // check if game has been initialized 
   if (secretWord) {
-    const key = evt.key.toUpperCase()
+    const key = evt.type === 'keydown' ? evt.key.toUpperCase() : evt.target.id.toUpperCase()
 
     // check if key is single letter and lastGuess is no more than 5 letters
-    if (key.length === 1 && /[A-Z]/i.test(key) && currentLetter < 5) {
-      updateGuess(evt)
-    } else if (key === 'BACKSPACE') {
-      updateGuess(evt)
+    if (key.length === 1 && /[A-Z]/i.test(key) && currentLetter < 5 || key === 'BACKSPACE') {
+      updateGuess(key)
     } else if (currentLetter >= 5 && key === 'ENTER') {
       handleGuess()
     }
@@ -84,8 +83,7 @@ function handleKeyPress(evt) {
   render()
 } 
 
-function updateGuess(evt) {
-  const key = evt.key.toUpperCase()
+function updateGuess(key) {
   if (key === 'BACKSPACE') {
     currentGuess = currentGuess.slice(0, -1)
     currentLetter = currentLetter > 0 ? --currentLetter : 0
