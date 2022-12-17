@@ -38,7 +38,7 @@ function init() {
   currentLetter = 0
   mainEl.style.display = 'block';
   updateBoard()
-  updateColors()
+  resetColors()
 }
 
 function render() {
@@ -149,4 +149,9 @@ function updateColors() {
       }
     })
   }
+}
+
+function resetColors() {
+  sqrEls.forEach((sqr) => sqr.className = 'sqr')
+  document.querySelectorAll('.key').forEach((key) => key.className = 'key')
 }
