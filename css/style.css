@@ -3,7 +3,7 @@ body {
   height: 100vh;
   box-sizing: border-box;
   font-family: sans-serif;
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
 }
 
 h1, h2 {
@@ -56,7 +56,7 @@ main, #reset-button {
   justify-content: center;
   align-items: center;
   height: 6vmin;
-  width: 6vmin
+  width: 6vmin;
 }
 
 .keyboard {
@@ -70,7 +70,9 @@ main, #reset-button {
 
 .keyboard-row {
   display: flex;
-  gap: 0.5vmin
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vmin;
 }
 
 .key {

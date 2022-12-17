@@ -1,9 +1,8 @@
 /*------------------------------- Constants -------------------------------*/
 import { getWord, checkWord } from "../data/words.js";
-const board = Array(30).fill(null, 0)
 
 /*------------------------------- Variables -------------------------------*/
-let difficulty, secretWord, winner, currentGuess, currentRow, currentLetter
+let difficulty, board, secretWord, winner, currentGuess, currentRow, currentLetter, loss
 
 /*----------------------- Cached Element Referenes ------------------------*/
 const diffBtnEls = document.getElementById('difficulties')
@@ -31,11 +30,15 @@ function chooseDifficulty(evt) {
 
 function init() {
   secretWord = getWord(difficulty)
+  board = Array(30).fill(null, 0)
   winner = false 
+  loss = false
   currentGuess = ''
   currentRow = 0
   currentLetter = 0
   mainEl.style.display = 'block';
+  updateBoard()
+  updateColors()
 }
 
 function render() {
@@ -52,7 +55,8 @@ function updateMessage() {
     messageEl.style.visibility = 'visible'
     messageEl.textContent = `You got it in ${currentRow / 5}! Play again?`
     diffBtnEls.style.display = 'flex'
-  } else if (currentRow === 30) {
+  }
+  if (loss) {
     messageEl.style.visibility = 'visible'
     messageEl.textContent = `The word was ${secretWord}. Play again?`
     diffBtnEls.style.display = 'flex'
@@ -91,9 +95,9 @@ function updateGuess(evt) {
 
 function handleGuess() {
   if (checkWord(currentGuess.toLowerCase())) {
-    updateBoard()
     updateColors()
     checkWinner()
+    checkLoss()
     currentRow += 5
     currentLetter = 0
     currentGuess = ''
@@ -106,33 +110,39 @@ function handleGuess() {
 }
 
 function checkWinner() {
-  if (currentGuess.toLowerCase() === secretWord && currentRow <= 5) {
+  if (currentGuess.toLowerCase() === secretWord && currentRow <= 25) {
     winner = true
   }
 }
 
+function checkLoss() {
+  if (currentGuess.toLowerCase() !== secretWord && currentRow >= 25) {
+    loss = true 
+  }
+}
+
 function updateColors() {
-  let lowerGuessArr = currentGuess.toLowerCase().split('')
-  let secretWordArr = secretWord.split('')
-  lowerGuessArr.forEach(function(char, idx) {
-    if (char === secretWordArr[idx]) {
-      sqrEls[currentRow + idx].classList.add('green')
-      document.getElementById(char).classList.add('green')
-      lowerGuessArr[idx] = ' '
-      secretWordArr[idx] = ' '
-      console.log(lowerGuessArr, secretWordArr);
-    }
-  })
-  lowerGuessArr.forEach(function(char, idx) { 
-    if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
-      sqrEls[currentRow + idx].classList.add('yellow')
-      document.getElementById(char).classList.add('yellow')
-      lowerGuessArr[idx] = ' '
-      secretWordArr[idx] = ' '
-      console.log(lowerGuessArr, secretWordArr);
-    } else if (char !== ' ') {
-      sqrEls[currentRow + idx].classList.add('grey')
-      document.getElementById(char).classList.add('grey')
-    }
-  })
+  if (currentGuess){
+    let lowerGuessArr = currentGuess.toLowerCase().split('')
+    let secretWordArr = secretWord.split('')
+    lowerGuessArr.forEach(function(char, idx) {
+      if (char === secretWordArr[idx]) {
+        sqrEls[currentRow + idx].classList.add('green')
+        document.getElementById(char).classList.add('green')
+        lowerGuessArr[idx] = ' '
+        secretWordArr[idx] = ' '
+      }
+    })
+    lowerGuessArr.forEach(function(char, idx) { 
+      if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
+        sqrEls[currentRow + idx].classList.add('yellow')
+        document.getElementById(char).classList.add('yellow')
+        lowerGuessArr[idx] = ' '
+        secretWordArr[idx] = ' '
+      } else if (char !== ' ') {
+        sqrEls[currentRow + idx].classList.add('grey')
+        document.getElementById(char).classList.add('grey')
+      }
+    })
+  }
 }
