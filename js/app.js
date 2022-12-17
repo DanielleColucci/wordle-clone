@@ -106,8 +106,9 @@ function handleGuess() {
   } else {
     messageEl.textContent = 'Invalid guess!'
     messageEl.style.visibility = 'visible'
+    document.getElementById(`row${currentRow + 1}`).style.animationPlayState = 'running'
     setTimeout(() => messageEl.style.visibility = 'hidden', 1000)
-    document.querySelector(`#row${currentRow + 1}`).style.animation = 'shake 0.5s linear'
+    setTimeout(() => document.getElementById(`row${currentRow + 1}`).style.animationPlayState = 'paused', 500)
   }
 }
 
