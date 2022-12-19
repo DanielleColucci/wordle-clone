@@ -128,6 +128,20 @@ function updateRoundState() {
   currentGuess = ''
 }
 
+function getColorArray() {
+  let lowerGuessArr = currentGuess.toLowerCase().split('')
+  let secretWordArr = secretWord.split('')
+  return lowerGuessArr.map(function(char, idx) {
+    if (char === secretWordArr[idx]) {
+      return 'green'
+    } else if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
+      return 'yellow'
+    } else {
+      return 'grey'
+    }
+  })
+}
+
 function updateColors() {
   let lowerGuessArr = currentGuess.toLowerCase().split('')
   let secretWordArr = secretWord.split('')
