@@ -55,16 +55,20 @@ function updateBoard() {
 
 function updateMessage() {
   if (winner) {
-    messageEl.style.visibility = 'visible'
-    messageEl.textContent = `You got it in ${currentRow}! Play again?`
-    diffBtnEls.style.display = 'flex'
-    resetBtnEl.style.display = 'none'
+    setTimeout(() => { 
+      messageEl.style.visibility = 'visible' 
+      messageEl.textContent = `You got it in ${currentRow}! Play again?`
+      diffBtnEls.style.display = 'flex'
+      resetBtnEl.style.display = 'none'
+    }, 3750)
   }
   if (loss) {
-    messageEl.style.visibility = 'visible'
-    messageEl.textContent = `The word was ${secretWord}. Play again?`
-    diffBtnEls.style.display = 'flex'
-    resetBtnEl.style.display = 'none'
+    setTimeout(() => { 
+      messageEl.style.visibility = 'visible' 
+      messageEl.textContent = `The word was ${secretWord}. Play again?`
+      diffBtnEls.style.display = 'flex'
+      resetBtnEl.style.display = 'none'
+    }, 3750)
   }
 }
 
