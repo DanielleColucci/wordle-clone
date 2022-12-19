@@ -129,29 +129,27 @@ function updateRoundState() {
 }
 
 function updateColors() {
-  if (currentGuess){
-    let lowerGuessArr = currentGuess.toLowerCase().split('')
-    let secretWordArr = secretWord.split('')
-    lowerGuessArr.forEach(function(char, idx) {
-      if (char === secretWordArr[idx]) {
-        sqrEls[currentRow * 5 + idx].classList.add('green')
-        document.getElementById(char).classList.add('green')
-        lowerGuessArr[idx] = ' '
-        secretWordArr[idx] = ' '
-      }
-    })
-    lowerGuessArr.forEach(function(char, idx) { 
-      if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
-        sqrEls[currentRow * 5 + idx].classList.add('yellow')
-        document.getElementById(char).classList.add('yellow')
-        lowerGuessArr[idx] = ' '
-        secretWordArr[secretWordArr.indexOf(char)] = ' '
-      } else if (char !== ' ') {
-        sqrEls[currentRow * 5 + idx].classList.add('grey')
-        document.getElementById(char).classList.add('grey')
-      }
-    })
-  }
+  let lowerGuessArr = currentGuess.toLowerCase().split('')
+  let secretWordArr = secretWord.split('')
+  lowerGuessArr.forEach(function(char, idx) {
+    if (char === secretWordArr[idx]) {
+      sqrEls[currentRow * 5 + idx].classList.add('green')
+      document.getElementById(char).classList.add('green')
+      lowerGuessArr[idx] = ' '
+      secretWordArr[idx] = ' '
+    }
+  })
+  lowerGuessArr.forEach(function(char, idx) { 
+    if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
+      sqrEls[currentRow * 5 + idx].classList.add('yellow')
+      document.getElementById(char).classList.add('yellow')
+      lowerGuessArr[idx] = ' '
+      secretWordArr[secretWordArr.indexOf(char)] = ' '
+    } else if (char !== ' ') {
+      sqrEls[currentRow * 5 + idx].classList.add('grey')
+      document.getElementById(char).classList.add('grey')
+    }
+  })
 }
 
 function resetColors() {
