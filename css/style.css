@@ -92,10 +92,13 @@ main, #reset-button {
 #reset-button {
   margin: 4vmin auto;
   font-size: 2vmin;
+  font-weight: bold;
   height: 5vmin;
   align-items: center;
   justify-content: center;
   width: 10vmin;
+  border: none;
+  border-radius: 0.5vmin;
 }
 
 .green {
