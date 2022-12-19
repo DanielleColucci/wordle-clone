@@ -28,6 +28,15 @@ h2 {
   padding: 0 1vmin;
 }
 
+.mode, #reset-button {
+  font-size: 2vmin;
+  font-weight: bold;
+  height: 5vmin;
+  width: 10vmin;
+  border: none;
+  border-radius: 0.5vmin;
+}
+
 main {
   display: none;
 }
@@ -91,14 +100,8 @@ main {
 
 #reset-button {
   margin: 4vmin auto;
-  font-size: 2vmin;
-  font-weight: bold;
-  height: 5vmin;
   align-items: center;
   justify-content: center;
-  width: 10vmin;
-  border: none;
-  border-radius: 0.5vmin;
 }
 
 .green {
