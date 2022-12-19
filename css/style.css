@@ -64,7 +64,7 @@ main, #reset-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5vmin;
+  gap: 1vmin;
   height: 19.5vmin; 
   font-size: 3vmin;
 }
@@ -73,13 +73,16 @@ main, #reset-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5vmin;
+  gap: 1vmin;
 }
 
 .key {
   font-size: 2vmin;
+  font-weight: bold;
   height: 6vmin;
   width: 5vmin; 
+  border: none;
+  border-radius: 0.5vmin;
 }
 
 #enter, #backspace {
