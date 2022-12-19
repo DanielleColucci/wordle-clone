@@ -143,27 +143,18 @@ function getColorArray() {
 }
 
 function updateColors() {
-  let lowerGuessArr = currentGuess.toLowerCase().split('')
-  let secretWordArr = secretWord.split('')
-  lowerGuessArr.forEach(function(char, idx) {
-    if (char === secretWordArr[idx]) {
-      sqrEls[currentRow * 5 + idx].classList.add('green')
-      document.getElementById(char).classList.add('green')
-      lowerGuessArr[idx] = ' '
-      secretWordArr[idx] = ' '
+  const colorArr = getColorArray()
+  let idx = 0
+  setInterval(function() {
+    if (idx <= 4) {
+      sqrEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
+      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
+      sqrEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
+      idx++
+    } else {
+      clearInterval()
     }
-  })
-  lowerGuessArr.forEach(function(char, idx) { 
-    if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
-      sqrEls[currentRow * 5 + idx].classList.add('yellow')
-      document.getElementById(char).classList.add('yellow')
-      lowerGuessArr[idx] = ' '
-      secretWordArr[secretWordArr.indexOf(char)] = ' '
-    } else if (char !== ' ') {
-      sqrEls[currentRow * 5 + idx].classList.add('grey')
-      document.getElementById(char).classList.add('grey')
-    }
-  })
+  }, 750)
 }
 
 function resetColors() {
