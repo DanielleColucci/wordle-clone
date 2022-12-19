@@ -1,9 +1,20 @@
 body {
-  background-color: rgb(10, 10, 10);
+  background-color: rgb(15, 15, 15);
   height: 100vh;
   box-sizing: border-box;
   font-family: 'Mulish', sans-serif;
   overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 0 2vmin 0;
+}
+
+body:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1, h2 {
@@ -11,8 +22,15 @@ h1, h2 {
   text-align: center;
 }
 
+h1 {
+  padding: 2vmin;
+  margin: 0;
+  font-size: 5vmin;
+}
+
 h2 {
   margin: 0;
+  font-size: 3vmin;
 }
 
 #difficulties {
@@ -21,10 +39,6 @@ h2 {
   justify-content: center;
   gap: 1vmin;
   padding: 2vmin;
-}
-
-.mode {
-  padding: 0 1vmin;
 }
 
 .mode, #reset-button {
@@ -37,14 +51,15 @@ h2 {
   font-weight: 600;
   border: none;
   border-radius: 0.5vmin;
+  margin: 0;
 }
 
 button:hover {
   cursor: pointer;
 }
 
-main {
-  display: none;
+.board, #keyboard {
+  visibility: hidden;
 }
 
 .board {
@@ -54,7 +69,6 @@ main {
   justify-content: space-around;
   height: 41vmin;
   font-size: 5vmin;
-  margin: 3vmin;
 }
 
 .row {
@@ -80,7 +94,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 1vmin;
-  height: 19.5vmin; 
+  height: 26vmin; 
   font-size: 3vmin;
 }
 
@@ -100,22 +114,16 @@ main {
   width: max-content;
 }
 
-#reset-button {
-  margin: 4vmin auto;
-  align-items: center;
-  justify-content: center;
-}
-
 .green {
-  background-color: green;
+  background-color: rgb(37, 147, 37);
 }
 
 .yellow {
-  background-color: goldenrod;
+  background-color: rgb(224, 184, 81);
 }
 
 .grey {
-  background-color: gray;
+  background-color: rgb(149, 149, 149);
 }
 
 .row {

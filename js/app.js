@@ -8,23 +8,23 @@ let difficulty, board, secretWord, winner, currentGuess, currentRow, currentLett
 const diffBtnEls = document.getElementById('difficulties')
 const messageEl = document.getElementById('message')
 const bodyEl = document.querySelector('body')
-const mainEl = document.querySelector('main')
+const boardEl = document.querySelector('.board')
 const sqrEls = document.querySelectorAll('.sqr')
-const keyboardEls = document.getElementById('keyboard')
+const keyboardEl = document.getElementById('keyboard')
 const resetBtnEl = document.getElementById('reset-button')
 
 /*---------------------------- Event Listeners ----------------------------*/
 diffBtnEls.addEventListener('click', chooseDifficulty)
 bodyEl.addEventListener('keydown', handleKeyPress)
 resetBtnEl.addEventListener('click', init)
-keyboardEls.addEventListener('click', handleKeyPress)
+keyboardEl.addEventListener('click', handleKeyPress)
 
 /*------------------------------- Functions -------------------------------*/
 
 function chooseDifficulty(evt) {
   if (evt.target.className === 'mode') {
     difficulty = Number(evt.target.id[5])
-    diffBtnEls.style.display = 'none'
+    diffBtnEls.style.visibility = 'hidden'
     messageEl.style.visibility = 'hidden'
     init()
   }
@@ -38,8 +38,9 @@ function init() {
   currentGuess = ''
   currentRow = 0
   currentLetter = 0
-  resetBtnEl.style.display = 'flex'
-  mainEl.style.display = 'block'
+  boardEl.style.visibility = 'visible'
+  keyboardEl.style.visibility = 'visible'
+  resetBtnEl.style.visibility = 'visible'
   updateBoard()
   resetColors()
 }
@@ -58,16 +59,16 @@ function updateMessage() {
     setTimeout(() => { 
       messageEl.style.visibility = 'visible' 
       messageEl.textContent = `You got it in ${currentRow}! Play again?`
-      diffBtnEls.style.display = 'flex'
-      resetBtnEl.style.display = 'none'
+      diffBtnEls.style.visibility = 'visible'
+      resetBtnEl.style.visibility = 'hidden'
     }, 3750)
   }
   if (loss) {
     setTimeout(() => { 
       messageEl.style.visibility = 'visible' 
       messageEl.textContent = `The word was ${secretWord}. Play again?`
-      diffBtnEls.style.display = 'flex'
-      resetBtnEl.style.display = 'none'
+      diffBtnEls.style.visibility = 'visible'
+      resetBtnEl.style.visibility = 'hidden'
     }, 3750)
   }
 }
