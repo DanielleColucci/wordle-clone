@@ -148,11 +148,14 @@ function getColorArray() {
 
 function updateColors() {
   const colorArr = getColorArray()
-  let idx = 0
+  sqrEls[currentRow * 5].classList.add(colorArr[0])
+  sqrEls[currentRow * 5].style.transform = 'rotateX(180deg)'
+  sqrEls[currentRow * 5].style.transition = '1.5s'
+  let idx = 1
   setInterval(function() {
     if (idx <= 4) {
       sqrEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
-      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
+      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateX(180deg)'
       sqrEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
       idx++
     } else {
