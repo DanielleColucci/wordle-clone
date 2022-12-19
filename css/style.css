@@ -7,7 +7,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0 0 2vmin 0;
 }
 
@@ -68,7 +68,7 @@ button:hover {
   align-items: center;
   justify-content: space-around;
   height: 41vmin;
-  font-size: 5vmin;
+  font-size: 4vmin;
 }
 
 .row {
@@ -96,6 +96,7 @@ button:hover {
   gap: 1vmin;
   height: 26vmin; 
   font-size: 3vmin;
+  margin: 5vmin;
 }
 
 .keyboard-row {
