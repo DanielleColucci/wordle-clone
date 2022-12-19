@@ -132,11 +132,15 @@ function getColorArray() {
   let lowerGuessArr = currentGuess.toLowerCase().split('')
   let secretWordArr = secretWord.split('')
   return lowerGuessArr.map(function(char, idx) {
+    let key = document.getElementById(char)
     if (char === secretWordArr[idx]) {
+      key.classList.add('green')
       return 'green'
     } else if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
+      key.classList.add('yellow')
       return 'yellow'
     } else {
+      key.classList.add('grey')
       return 'grey'
     }
   })
