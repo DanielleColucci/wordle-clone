@@ -79,8 +79,8 @@ function handleKeyPress(evt) {
     } else if (currentLetter >= 5 && key === 'ENTER') {
       handleGuess()
     }
+    render()
   }
-  render()
 } 
 
 function updateGuess(key) {
