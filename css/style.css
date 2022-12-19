@@ -2,7 +2,7 @@ body {
   background-color: rgb(10, 10, 10);
   height: 100vh;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Mulish', sans-serif;
   overflow-y: hidden;
 }
 
@@ -24,15 +24,17 @@ h2 {
 }
 
 .mode {
-  font-size: 3vmin;
   padding: 0 1vmin;
 }
 
 .mode, #reset-button {
-  font-size: 2vmin;
-  font-weight: bold;
   height: 5vmin;
   width: 10vmin;
+}
+
+.mode, .key, #reset-button {
+  font-size: 2vmin;
+  font-weight: 600;
   border: none;
   border-radius: 0.5vmin;
 }
@@ -90,12 +92,8 @@ main {
 }
 
 .key {
-  font-size: 2vmin;
-  font-weight: bold;
   height: 6vmin;
   width: 5vmin; 
-  border: none;
-  border-radius: 0.5vmin;
 }
 
 #enter, #backspace {
