@@ -88,6 +88,7 @@ button:hover {
 
 .front, .back {
   position: relative;
+  background-color: blue;
   backface-visibility: hidden;
   perspective: 1000px;
 }
@@ -97,6 +98,7 @@ button:hover {
 }
 
 .back {
+  background-color: red;
   transform: rotateY(180deg);
 }
 

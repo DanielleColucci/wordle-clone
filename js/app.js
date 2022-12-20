@@ -53,11 +53,7 @@ function render() {
 }
 
 function updateBoard() {
-  // board.forEach((sqrText, idx) => sqrEls[idx].textContent = sqrText)
-  board.forEach(function(sqrText, idx) {
-    frontEls[idx].textContent = sqrText
-    backEls[idx].textContent = sqrText
-  })
+  board.forEach((sqrText, idx) => sqrEls[idx].textContent = sqrText)
 }
 
 function updateMessage() {
@@ -85,7 +81,7 @@ function handleKeyPress(evt) {
     const key = evt.type === 'keydown' ? evt.key.toUpperCase() : evt.target.id.toUpperCase()
 
     // check if key is single letter and lastGuess is no more than 5 letters
-    if (key >= 'A' && key <= 'Z' && currentLetter < 5 || key === 'BACKSPACE') {
+    if ((key.length === 1 && key >= 'A' && key <= 'Z' && currentLetter < 5) || key === 'BACKSPACE') {
       updateGuess(key)
     } else if (currentLetter >= 5 && key === 'ENTER') {
       handleGuess()
@@ -163,29 +159,32 @@ function getColorArray() {
   })
   return colorArr
 }
-const contentContainerEls = document.querySelectorAll('.content')
+
 function updateColors() {
   const colorArr = getColorArray()
 
   backEls[currentRow * 5].classList.add(colorArr[0])
-  frontEls[currentRow * 5].style.transform = 'rotateY(180deg)'
-  backEls[currentRow * 5].style.transform = 'rotateY(0deg)'
-  contentContainerEls[currentRow * 5].style.transform = 'rotateY(-180deg)'
-  sqrEls[currentRow * 5].style.transform = 'rotateY(180deg)'
+  frontEls[currentRow * 5].style.transform = 'rotateY(0deg)'
+  sqrEls[currentRow * 5].style.transform = 'rotateY(0deg)'
 
-  let idx = 1
+  let idx = 0
   setInterval(function() {
     if (idx <= 4) {
-      backEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
-      frontEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(-180deg)'
-      backEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(0deg)'
-      contentContainerEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(-180deg)'
-      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(-180deg)'
+      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
+    } else {
+      clearInterval()
+    }
+  }, 1000)
+  setInterval(function() {
+    if (idx <= 4) {
+      sqrEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
+      sqrEls[(currentRow - 1) * 5 + idx].style.transition = '0s'
+      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(0deg)'
       idx++
     } else {
       clearInterval()
     }
-  }, 750)
+  }, 1500)
 }
 
 function resetColors() {
