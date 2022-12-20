@@ -136,19 +136,26 @@ function updateRoundState() {
 function getColorArray() {
   let lowerGuessArr = currentGuess.toLowerCase().split('')
   let secretWordArr = secretWord.split('')
-  return lowerGuessArr.map(function(char, idx) {
-    let key = document.getElementById(char)
+  let colorArr = []
+  lowerGuessArr.forEach(function(char, idx) {
     if (char === secretWordArr[idx]) {
-      key.classList.add('green')
-      return 'green'
-    } else if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
-      key.classList.add('yellow')
-      return 'yellow'
-    } else {
-      key.classList.add('grey')
-      return 'grey'
+      document.getElementById(char).classList.add('green')
+      colorArr.splice(idx, 0, 'green')
+      lowerGuessArr[idx] = ' '
+      secretWordArr[idx] = ' '
+    } 
+  }) 
+  lowerGuessArr.forEach(function(char, idx) {
+    if (secretWordArr.includes(char) && char !== secretWordArr[idx]) {
+      document.getElementById(char).classList.add('yellow')
+      colorArr.splice(idx, 0, 'yellow')
+      secretWordArr[secretWordArr.indexOf(char)] = ' '
+    } else if (char !== ' ') {
+      document.getElementById(char).classList.add('grey')
+      colorArr.splice(idx, 0, 'grey')
     }
   })
+  return colorArr
 }
 
 function updateColors() {
