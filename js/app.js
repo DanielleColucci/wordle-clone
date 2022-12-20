@@ -59,20 +59,16 @@ function updateBoard() {
 
 function updateMessage() {
   if (winner) {
-    setTimeout(() => { 
-      messageEl.style.visibility = 'visible' 
-      messageEl.textContent = `You got it in ${currentRow}! Play again?`
-      diffBtnEls.style.visibility = 'visible'
-      resetBtnEl.style.visibility = 'hidden'
-    }, 3750)
+    messageEl.style.visibility = 'visible' 
+    messageEl.textContent = `You got it in ${currentRow}! Play again?`
+    diffBtnEls.style.visibility = 'visible'
+    resetBtnEl.style.visibility = 'hidden'
   }
   if (loss) {
-    setTimeout(() => { 
-      messageEl.style.visibility = 'visible' 
-      messageEl.textContent = `The word was ${secretWord}. Play again?`
-      diffBtnEls.style.visibility = 'visible'
-      resetBtnEl.style.visibility = 'hidden'
-    }, 3750)
+    messageEl.style.visibility = 'visible' 
+    messageEl.textContent = `The word was ${secretWord}. Play again?`
+    diffBtnEls.style.visibility = 'visible'
+    resetBtnEl.style.visibility = 'hidden'
   }
 }
 
@@ -82,10 +78,10 @@ function handleKeyPress(evt) {
 
     if ((key.length === 1 && key >= 'A' && key <= 'Z' && currentLetter < 5) || key === 'BACKSPACE') {
       updateGuess(key)
+      render()
     } else if (currentLetter >= 5 && key === 'ENTER') {
       handleGuess()
     }
-    render()
   }
 } 
 
@@ -109,6 +105,7 @@ function handleGuess() {
       checkWinner()
       checkLoss()
       updateRoundState()
+      render()
     }, 2000)
   } else {
     messageEl.textContent = 'Invalid guess!'
