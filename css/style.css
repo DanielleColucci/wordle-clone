@@ -84,7 +84,6 @@ button:hover {
   border: 1px solid white;
   height: 6vmin;
   width: 6vmin;
-  transition: 1.5s;
 }
 
 .sqr, .keyboard-row {
@@ -139,5 +138,16 @@ button:hover {
   }
   40%, 60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes verticalFlip {
+  0% {
+    transform: perspective(1000px) rotateX('90deg');
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(1000px) rotateX('0deg');
+    opacity: 1;
   }
 }

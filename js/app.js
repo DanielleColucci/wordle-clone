@@ -167,27 +167,19 @@ function getColorArray() {
 
 function updateColors() {
   const colorArr = getColorArray()
-  sqrEls[currentRow * 5].style.transform = 'rotateX(0deg)'
+  sqrEls[currentRow * 5].style.animation = '1.5s 1 verticalFlip'
+  sqrEls[currentRow * 5].classList.add(colorArr[0])
 
-  let idx = 0
-  setInterval(function() {
+  let idx = 1
+  setInterval(() => {
     if (idx <= 4) {
-      sqrEls[(currentRow) * 5 + idx].style.transform = 'rotateX(180deg)'
-      sqrEls[(currentRow) * 5 + idx].style.transition = '0s'
-    } else {
-      clearInterval()
-    }
-  }, 725)
-  setInterval(function() {
-    if (idx <= 4) {
-      sqrEls[(currentRow) * 5 + idx].classList.add(colorArr[idx])
-      sqrEls[(currentRow) * 5 + idx].style.transform = 'rotateX(0deg)'
-      sqrEls[(currentRow) * 5 + idx].style.transition = '1.5s'
+      sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx])
+      sqrEls[currentRow * 5 + idx].style.animation = '5s 1 verticalFlip'
       idx++
     } else {
       clearInterval()
     }
-  }, 750)
+  }, 500)
 }
 
 function resetColors() {
