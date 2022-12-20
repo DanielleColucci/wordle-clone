@@ -2,7 +2,7 @@
 import { getWord, checkWord } from "../data/words.js";
 
 /*------------------------------- Variables -------------------------------*/
-let difficulty, board, secretWord, winner, currentGuess, currentRow, currentLetter, loss
+let difficulty, board, secretWord, winner, acceptingGuess, currentGuess, currentRow, currentLetter, loss
 
 /*----------------------- Cached Element Referenes ------------------------*/
 const diffBtnEls = document.getElementById('difficulties')
@@ -37,6 +37,7 @@ function init() {
   board = Array(30).fill(null, 0)
   winner = false 
   loss = false
+  acceptingGuess = true
   currentGuess = ''
   currentRow = 0
   currentLetter = 0
@@ -77,7 +78,7 @@ function updateMessage() {
 
 function handleKeyPress(evt) {
   // check if game has been initialized 
-  if (secretWord) {
+  if (acceptingGuess) {
     const key = evt.type === 'keydown' ? evt.key.toUpperCase() : evt.target.id.toUpperCase()
 
     // check if key is single letter and lastGuess is no more than 5 letters
@@ -104,10 +105,13 @@ function updateGuess(key) {
 
 function handleGuess() {
   if (checkWord(currentGuess.toLowerCase())) {
+    acceptingGuess = false
     updateColors()
-    checkWinner()
-    checkLoss()
-    updateRoundState()
+    setTimeout(() => {
+      checkWinner()
+      checkLoss()
+      updateRoundState()
+    }, 7500)
   } else {
     messageEl.textContent = 'Invalid guess!'
     messageEl.style.visibility = 'visible'
@@ -133,6 +137,7 @@ function updateRoundState() {
   currentRow++
   currentLetter = 0
   currentGuess = ''
+  if (!winner && !loss) acceptingGuess = true
 }
 
 function getColorArray() {
@@ -167,21 +172,22 @@ function updateColors() {
   let idx = 0
   setInterval(function() {
     if (idx <= 4) {
-      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
+      sqrEls[(currentRow) * 5 + idx].style.transform = 'rotateY(180deg)'
+      sqrEls[(currentRow) * 5 + idx].style.transition = '0s'
     } else {
       clearInterval()
     }
-  }, 750)
+  }, 725)
   setInterval(function() {
     if (idx <= 4) {
-      sqrEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
-      sqrEls[(currentRow - 1) * 5 + idx].style.transition = '0s'
-      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(0deg)'
+      sqrEls[(currentRow) * 5 + idx].classList.add(colorArr[idx])
+      sqrEls[(currentRow) * 5 + idx].style.transform = 'rotateY(0deg)'
+      sqrEls[(currentRow) * 5 + idx].style.transition = '1.5s'
       idx++
     } else {
       clearInterval()
     }
-  }, 1500)
+  }, 750)
 }
 
 function resetColors() {
