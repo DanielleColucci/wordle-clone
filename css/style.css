@@ -92,6 +92,10 @@ button:hover {
   perspective: 1000px;
 }
 
+.sqr, .front, .back, .content {
+  transition: 1.5s;
+}
+
 .back {
   transform: rotateY(180deg);
 }
