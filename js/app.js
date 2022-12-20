@@ -79,7 +79,7 @@ function handleKeyPress(evt) {
     const key = evt.type === 'keydown' ? evt.key.toUpperCase() : evt.target.id.toUpperCase()
 
     // check if key is single letter and lastGuess is no more than 5 letters
-    if (key.length === 1 && /[A-Z]/i.test(key) && currentLetter < 5 || key === 'BACKSPACE') {
+    if (key >= 'A' && key <= 'Z' && currentLetter < 5 || key === 'BACKSPACE') {
       updateGuess(key)
     } else if (currentLetter >= 5 && key === 'ENTER') {
       handleGuess()
