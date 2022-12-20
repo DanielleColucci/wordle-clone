@@ -123,16 +123,17 @@ button:hover {
   width: max-content;
 }
 
-.green {
-  background-color: rgb(37, 147, 37);
+.grey {
+  background-color: rgb(149, 149, 149);
+  
 }
 
 .yellow {
   background-color: rgb(224, 184, 81);
 }
 
-.grey {
-  background-color: rgb(149, 149, 149);
+.green {
+  background-color: rgb(37, 147, 37);
 }
 
 @keyframes shake {
