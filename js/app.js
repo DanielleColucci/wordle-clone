@@ -10,6 +10,8 @@ const messageEl = document.getElementById('message')
 const bodyEl = document.querySelector('body')
 const boardEl = document.querySelector('.board')
 const sqrEls = document.querySelectorAll('.sqr')
+const frontEls = document.querySelectorAll('.front')
+const backEls = document.querySelectorAll('.back')
 const keyboardEl = document.getElementById('keyboard')
 const resetBtnEl = document.getElementById('reset-button')
 
@@ -51,7 +53,11 @@ function render() {
 }
 
 function updateBoard() {
-  board.forEach((sqrText, idx) => sqrEls[idx].textContent = sqrText)
+  // board.forEach((sqrText, idx) => sqrEls[idx].textContent = sqrText)
+  board.forEach(function(sqrText, idx) {
+    frontEls[idx].textContent = sqrText
+    backEls[idx].textContent = sqrText
+  })
 }
 
 function updateMessage() {
@@ -161,16 +167,18 @@ function getColorArray() {
 function updateColors() {
   const colorArr = getColorArray()
   sqrEls[currentRow * 5].classList.add(colorArr[0])
-  sqrEls[currentRow * 5].style.transform = 'rotateY(180deg)'
-  // sqrEls[currentRow * 5].style.backfaceVisibility = 'hidden'
-  sqrEls[currentRow * 5].style.transition = '1.5s'
+  frontEls[currentRow * 5].style.transform = 'rotateY(180deg)'
+  frontEls[currentRow * 5].style.transition = '1.5s'
+  backEls[currentRow * 5].style.transform = 'rotateY(0deg)'
+  backEls[currentRow * 5].style.transition = '1.5s'
   let idx = 1
   setInterval(function() {
     if (idx <= 4) {
       sqrEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
-      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
-      // sqrEls[(currentRow - 1) * 5 + idx].style.backfaceVisibility = 'hidden'
-      sqrEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
+      frontEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
+      frontEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
+      backEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(0deg)'
+      backEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
       idx++
     } else {
       clearInterval()
