@@ -9,6 +9,7 @@ const diffBtnEls = document.getElementById('difficulties')
 const messageEl = document.getElementById('message')
 const bodyEl = document.querySelector('body')
 const boardEl = document.querySelector('.board')
+const sqrEls = document.querySelectorAll('.sqr')
 const frontEls = document.querySelectorAll('.front')
 const backEls = document.querySelectorAll('.back')
 const keyboardEl = document.getElementById('keyboard')
@@ -167,6 +168,8 @@ function updateColors() {
   const colorArr = getColorArray()
   frontEls[currentRow * 5].style.transform = 'rotateY(180deg)'
   frontEls[currentRow * 5].style.transition = '1.5s'
+  sqrEls[currentRow * 5].style.transform = 'rotateY(180deg)'
+  sqrEls[currentRow * 5].style.transition = '1.5s'
   backEls[currentRow * 5].classList.add(colorArr[0])
   backEls[currentRow * 5].style.transform = 'rotateY(0deg)'
   backEls[currentRow * 5].style.transition = '1.5s'
@@ -175,6 +178,8 @@ function updateColors() {
     if (idx <= 4) {
       frontEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
       frontEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
+      sqrEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(180deg)'
+      sqrEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
       backEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
       backEls[(currentRow - 1) * 5 + idx].style.transform = 'rotateY(0deg)'
       backEls[(currentRow - 1) * 5 + idx].style.transition = '1.5s'
