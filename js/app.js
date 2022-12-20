@@ -162,9 +162,6 @@ function getColorArray() {
 
 function updateColors() {
   const colorArr = getColorArray()
-
-  backEls[currentRow * 5].classList.add(colorArr[0])
-  frontEls[currentRow * 5].style.transform = 'rotateY(0deg)'
   sqrEls[currentRow * 5].style.transform = 'rotateY(0deg)'
 
   let idx = 0
@@ -174,7 +171,7 @@ function updateColors() {
     } else {
       clearInterval()
     }
-  }, 1000)
+  }, 750)
   setInterval(function() {
     if (idx <= 4) {
       sqrEls[(currentRow - 1) * 5 + idx].classList.add(colorArr[idx])
@@ -188,6 +185,6 @@ function updateColors() {
 }
 
 function resetColors() {
-  backEls.forEach((back) => back.className = 'back')
+  sqrEls.forEach((sqr) => sqr.className = 'sqr')
   document.querySelectorAll('.key').forEach((key) => key.className = 'key')
 }

@@ -84,22 +84,7 @@ button:hover {
   border: 1px solid white;
   height: 6vmin;
   width: 6vmin;
-}
-
-.front, .back {
-  position: relative;
-  background-color: blue;
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-.sqr, .front, .back, .content {
   transition: 1.5s;
-}
-
-.back {
-  background-color: red;
-  transform: rotateY(180deg);
 }
 
 .sqr, .keyboard-row {
