@@ -84,16 +84,16 @@ button:hover {
   border: 1px solid white;
   height: 6vmin;
   width: 6vmin;
-  perspective: 1000px;
 }
 
 .front, .back {
   position: relative;
   backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .back {
-  transform: rotateX(180deg);
+  transform: rotateY(180deg);
 }
 
 .sqr, .keyboard-row {
