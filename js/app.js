@@ -77,11 +77,9 @@ function updateMessage() {
 }
 
 function handleKeyPress(evt) {
-  // check if game has been initialized 
   if (acceptingGuess) {
     const key = evt.type === 'keydown' ? evt.key.toUpperCase() : evt.target.id.toUpperCase()
 
-    // check if key is single letter and lastGuess is no more than 5 letters
     if ((key.length === 1 && key >= 'A' && key <= 'Z' && currentLetter < 5) || key === 'BACKSPACE') {
       updateGuess(key)
     } else if (currentLetter >= 5 && key === 'ENTER') {
@@ -111,7 +109,7 @@ function handleGuess() {
       checkWinner()
       checkLoss()
       updateRoundState()
-    }, 7500)
+    }, 2000)
   } else {
     messageEl.textContent = 'Invalid guess!'
     messageEl.style.visibility = 'visible'
@@ -167,14 +165,12 @@ function getColorArray() {
 
 function updateColors() {
   const colorArr = getColorArray()
-  sqrEls[currentRow * 5].style.animation = '0.5s 1 verticalFlip'
-  sqrEls[currentRow * 5].classList.add(colorArr[0])
+  sqrEls[currentRow * 5].classList.add(colorArr[0], 'flip')
 
   let idx = 1
   setInterval(() => {
     if (idx <= 4) {
-      sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx])
-      sqrEls[currentRow * 5 + idx].style.animation = '0.5s 1 verticalFlip'
+      sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx], 'flip')
       idx++
     } else {
       clearInterval()

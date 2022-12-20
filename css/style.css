@@ -86,6 +86,10 @@ button:hover {
   width: 6vmin;
 }
 
+.flip {
+  animation: verticalFlip 0.5s 1;
+}
+
 .sqr, .keyboard-row {
   display: flex;
   justify-content: center;
