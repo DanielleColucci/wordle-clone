@@ -143,11 +143,18 @@ button:hover {
 
 @keyframes verticalFlip {
   0% {
-    transform: perspective(1000px) rotateX('90deg');
-    opacity: 0;
-  }
-  100% {
-    transform: perspective(1000px) rotateX('0deg');
+    transform: perspective(120px) rotateX(90deg);
     opacity: 1;
+    animation-timing-function: ease-in;
+  }
+  
+  30% {
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+  
+  100% {
+    transform: perspective(120px) rotateX(0deg);
+    animation-timing-function: ease-in;
   }
 }

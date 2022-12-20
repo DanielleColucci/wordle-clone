@@ -167,19 +167,19 @@ function getColorArray() {
 
 function updateColors() {
   const colorArr = getColorArray()
-  sqrEls[currentRow * 5].style.animation = '1.5s 1 verticalFlip'
+  sqrEls[currentRow * 5].style.animation = '0.5s 1 verticalFlip'
   sqrEls[currentRow * 5].classList.add(colorArr[0])
 
   let idx = 1
   setInterval(() => {
     if (idx <= 4) {
       sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx])
-      sqrEls[currentRow * 5 + idx].style.animation = '5s 1 verticalFlip'
+      sqrEls[currentRow * 5 + idx].style.animation = '0.5s 1 verticalFlip'
       idx++
     } else {
       clearInterval()
     }
-  }, 500)
+  }, 400)
 }
 
 function resetColors() {
