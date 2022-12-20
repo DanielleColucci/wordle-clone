@@ -20,16 +20,15 @@ body:first-child {
 h1, h2 {
   color: whitesmoke;
   text-align: center;
+  margin: 0;
 }
 
 h1 {
   padding: 2vmin;
-  margin: 0;
   font-size: 5vmin;
 }
 
 h2 {
-  margin: 0;
   font-size: 3vmin;
 }
 
@@ -60,12 +59,12 @@ button:hover {
 
 .board, #keyboard {
   visibility: hidden;
-}
-
-.board {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.board {
   justify-content: space-around;
   height: 41vmin;
   font-size: 4vmin;
@@ -76,22 +75,29 @@ button:hover {
   align-items: center;
   justify-content: space-around;
   width: 35vmin;
+  animation: shake 0.5s infinite linear;
+  animation-play-state: paused;
 }
 
 .sqr {
   color: whitesmoke;
   border: 1px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 6vmin;
   width: 6vmin;
 }
 
-#keyboard {
+.sqr > div {
+  font-size: 24px;
+  position: relative;
+}
+
+.sqr, .keyboard-row {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+}
+
+#keyboard {
   justify-content: center;
   gap: 1vmin;
   height: 26vmin; 
@@ -100,9 +106,6 @@ button:hover {
 }
 
 .keyboard-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 1vmin;
 }
 
@@ -125,11 +128,6 @@ button:hover {
 
 .grey {
   background-color: rgb(149, 149, 149);
-}
-
-.row {
-  animation: shake 0.5s infinite linear;
-  animation-play-state: paused;
 }
 
 @keyframes shake {
