@@ -174,7 +174,7 @@ button:hover {
 
 @media only screen and (max-width: 820px) {
   body {
-    height: 80vh;
+    height: 70vh;
   }
 
   body:first-child {
@@ -183,6 +183,7 @@ button:hover {
   
   h1 {
     font-size: 4vmax;
+    padding: 0;
   }
 
   h2 {
@@ -200,6 +201,7 @@ button:hover {
     height: 55vmax;
     font-size: 4vmax;
     gap: 0.75vmax;
+    margin-bottom: 6vmin;
   }
 
   .row {
@@ -216,7 +218,7 @@ button:hover {
     gap: 0.5vmax;
     height: 25vmax; 
     width: 45vmax;
-    margin: 5vmax;
+    margin: 0;
   }
   
   .keyboard-row {
