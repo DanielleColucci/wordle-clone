@@ -4,6 +4,7 @@ import * as gameAudio from "./audio.js"
 
 /*------------------------------- Variables -------------------------------*/
 let difficulty, board, secretWord, winner, acceptingGuess, currentGuess, currentRow, currentLetter, loss
+let sound = true
 
 /*----------------------- Cached Element Referenes ------------------------*/
 const diffBtnEls = document.getElementById('difficulties')
@@ -13,12 +14,14 @@ const boardEl = document.querySelector('.board')
 const sqrEls = document.querySelectorAll('.sqr')
 const keyboardEl = document.getElementById('keyboard')
 const resetBtnEl = document.getElementById('reset-button')
+const soundBtnEl = document.getElementById('toggle-sound')
 
 /*---------------------------- Event Listeners ----------------------------*/
 diffBtnEls.addEventListener('click', chooseDifficulty)
 bodyEl.addEventListener('keydown', handleKeyPress)
 resetBtnEl.addEventListener('click', init)
 keyboardEl.addEventListener('click', handleKeyPress)
+soundBtnEl.addEventListener('click', toggleSound)
 
 /*------------------------------- Functions -------------------------------*/
 
@@ -77,10 +80,10 @@ function handleKeyPress(evt) {
 
     if ((key.length === 1 && key >= 'A' && key <= 'Z' && currentLetter < 5) || key === 'BACKSPACE') {
       updateGuess(key)
-      gameAudio.playClick()
+      if (sound) gameAudio.playClick()
       render()
     } else if (currentLetter >= 5 && key === 'ENTER') {
-      gameAudio.playClick()
+      if (sound) gameAudio.playClick()
       handleGuess()
     }
   }
@@ -164,13 +167,13 @@ function getColorArray() {
 function updateColors() {
   const colorArr = getColorArray()
   sqrEls[currentRow * 5].classList.add(colorArr[0], 'flip')
-  gameAudio.playFlip()
+  if (sound) gameAudio.playFlip()
   
   let idx = 1
   setInterval(() => {
     if (idx <= 4) {
       sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx], 'flip')
-      gameAudio.playFlip()
+      if (sound) gameAudio.playFlip()
       idx++
     } else {
       clearInterval()
@@ -181,4 +184,9 @@ function updateColors() {
 function resetColors() {
   sqrEls.forEach((sqr) => sqr.className = 'sqr')
   document.querySelectorAll('.key').forEach((key) => key.className = 'key')
+}
+
+function toggleSound() {
+  sound = sound ? false : true
+  soundBtnEl.textContent = sound ? '🔊' : '🔈'
 }
