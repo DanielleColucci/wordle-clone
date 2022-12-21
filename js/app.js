@@ -164,16 +164,18 @@ function getColorArray() {
 function updateColors() {
   const colorArr = getColorArray()
   sqrEls[currentRow * 5].classList.add(colorArr[0], 'flip')
-
+  gameAudio.playFlip()
+  
   let idx = 1
   setInterval(() => {
     if (idx <= 4) {
       sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx], 'flip')
+      gameAudio.playFlip()
       idx++
     } else {
       clearInterval()
     }
-  }, 400)
+  }, 500)
 }
 
 function resetColors() {
