@@ -65,7 +65,8 @@ button:hover {
 }
 
 .board {
-  justify-content: space-around;
+  justify-content: center;
+  gap: 0.75vmin;
   height: 41vmin;
   font-size: 4vmin;
 }
@@ -73,7 +74,8 @@ button:hover {
 .row {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 0.75vmin;
   width: 35vmin;
   animation: shake 0.5s infinite linear;
   animation-play-state: paused;
@@ -164,20 +166,33 @@ button:hover {
 }
 
 @media only screen and (max-width: 720px) {
-  body {
-    height: 80vmax;
+  h1 {
+    font-size: 4vmax;
+  }
+
+  h2 {
+    font-size: 3vmax;
+  }
+
+  .mode {
+    width: 10vmax;
+    height: 4vmax;
+    font-size: 2vmax;
   }
 
   .board {
-    height: 70vmin;
+    height: 55vmax;
+    font-size: 4vmax;
+    gap: 0.75vmax;
   }
 
   .row {
-    width: 60vmin;
+    width: 35vmax;
+    gap: 0.75vmax;
   }
 
   .sqr {
-    height: 10vmin;
-    width: 10vmin;
+    height: 6vmax;
+    width: 6vmax;
   }
 }
