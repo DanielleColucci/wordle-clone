@@ -9,6 +9,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin: 0 0 2vmin 0;
+  touch-action: manipulation;
 }
 
 body:first-child {
