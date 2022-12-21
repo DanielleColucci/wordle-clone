@@ -11,8 +11,6 @@ const messageEl = document.getElementById('message')
 const bodyEl = document.querySelector('body')
 const boardEl = document.querySelector('.board')
 const sqrEls = document.querySelectorAll('.sqr')
-const frontEls = document.querySelectorAll('.front')
-const backEls = document.querySelectorAll('.back')
 const keyboardEl = document.getElementById('keyboard')
 const resetBtnEl = document.getElementById('reset-button')
 
