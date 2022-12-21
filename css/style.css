@@ -200,7 +200,11 @@ button:hover {
     height: 20vmax;
   }
   
-  h1 {
+  #header {
+    width: 85%;
+  }
+  
+  h1, #toggle-sound {
     font-size: 4vmax;
     padding-top: 1vmin;
   }
