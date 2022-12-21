@@ -1,5 +1,6 @@
 /*------------------------------- Constants -------------------------------*/
 import { getWord, checkWord } from "../data/words.js";
+import * as gameAudio from "./audio.js"
 
 /*------------------------------- Variables -------------------------------*/
 let difficulty, board, secretWord, winner, acceptingGuess, currentGuess, currentRow, currentLetter, loss
@@ -78,6 +79,7 @@ function handleKeyPress(evt) {
 
     if ((key.length === 1 && key >= 'A' && key <= 'Z' && currentLetter < 5) || key === 'BACKSPACE') {
       updateGuess(key)
+      gameAudio.playClick()
       render()
     } else if (currentLetter >= 5 && key === 'ENTER') {
       handleGuess()
