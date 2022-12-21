@@ -73,6 +73,7 @@ button:hover {
   gap: 0.75vmin;
   height: 41vmin;
   font-size: 4vmin;
+  margin-bottom: 6vmin;
 }
 
 .row {
@@ -106,8 +107,9 @@ button:hover {
   justify-content: center;
   gap: 1vmin;
   height: 26vmin; 
+  width: 63vmin;
   font-size: 3vmin;
-  margin: 5vmin;
+  margin-bottom: 5vmin;
 }
 
 .keyboard-row {
@@ -169,7 +171,15 @@ button:hover {
   }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 820px) {
+  body {
+    height: 85vmax;
+  }
+
+  body:first-child {
+    height: 20vmax;
+  }
+  
   h1 {
     font-size: 4vmax;
   }
@@ -181,7 +191,8 @@ button:hover {
   .mode {
     width: 10vmax;
     height: 4vmax;
-    font-size: 2vmax;
+    max-width: 15%;
+    font-size: 1.5vmax;
   }
 
   .board {
@@ -198,5 +209,28 @@ button:hover {
   .sqr {
     height: 6vmax;
     width: 6vmax;
+  }
+
+  #keyboard {
+    gap: 0.5vmax;
+    height: 25vmax; 
+    width: 45vmax;
+    margin: 5vmax;
+  }
+  
+  .keyboard-row {
+    gap: 0.5vmax;
+  }
+  
+  .key {
+    height: 6vmax;
+    width: 3.75vmax; 
+    font-size: 1.5vmax;
+  }
+
+  #reset-button {
+    height: 3vmax;
+    width: 10vmax;
+    font-size: 1.5vmax;
   }
 }
