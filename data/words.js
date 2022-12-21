@@ -2118,7 +2118,6 @@ const lvl1Words = [
   "flier",
   "axles",
   "plied",
-  "booby",
   "patio",
   "rabbi",
   "petal",
@@ -5754,7 +5753,8 @@ const lvl1Words = [
     "porno", 
     "nudes", 
     "horny", 
-    "sluts"
+    "sluts",
+    "booby"
   ]
   
   function getWord(lvl) {
