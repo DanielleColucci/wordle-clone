@@ -82,6 +82,10 @@ button:hover, #toggle-sound:hover {
   cursor: pointer;
 }
 
+button:active {
+  background-color: rgb(149, 149, 149);
+}
+
 .board, #keyboard {
   visibility: hidden;
   display: flex;
