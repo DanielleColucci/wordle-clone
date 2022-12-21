@@ -82,6 +82,7 @@ function handleKeyPress(evt) {
       gameAudio.playClick()
       render()
     } else if (currentLetter >= 5 && key === 'ENTER') {
+      gameAudio.playClick()
       handleGuess()
     }
   }
