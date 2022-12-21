@@ -43,6 +43,9 @@ h2 {
 .mode, #reset-button {
   height: 5vmin;
   width: 10vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mode, .key, #reset-button {
