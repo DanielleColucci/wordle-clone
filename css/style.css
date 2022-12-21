@@ -12,10 +12,25 @@ body {
   touch-action: pinch-zoom;
 }
 
-body:first-child {
+#header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#top-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#top-banner > div, #toggle-sound {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  width: 6vmin;
 }
 
 h1, h2 {
@@ -24,9 +39,13 @@ h1, h2 {
   margin: 0;
 }
 
-h1 {
-  padding: 2vmin;
+h1, #toggle-sound {
+  padding-top: 2vmin;
   font-size: 5vmin;
+}
+
+#top-banner > div {
+  visibility: hidden;
 }
 
 h2 {
@@ -183,7 +202,7 @@ button:hover {
   
   h1 {
     font-size: 4vmax;
-    padding: 0;
+    padding-top: 1vmin;
   }
 
   h2 {
