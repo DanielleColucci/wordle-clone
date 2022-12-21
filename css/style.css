@@ -162,3 +162,22 @@ button:hover {
     animation-timing-function: ease-in;
   }
 }
+
+@media only screen and (max-width: 720px) {
+  body {
+    height: 80vmax;
+  }
+
+  .board {
+    height: 70vmin;
+  }
+
+  .row {
+    width: 60vmin;
+  }
+
+  .sqr {
+    height: 10vmin;
+    width: 10vmin;
+  }
+}
