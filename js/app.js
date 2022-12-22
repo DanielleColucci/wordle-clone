@@ -120,6 +120,7 @@ async function updateGameState() {
     checkWinner()
     checkLoss()
     updateRoundState()
+    render()
   }
 }
 
