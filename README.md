@@ -23,7 +23,8 @@ This Wordle clone is a recreation of the game Wordle, popularized on the [New Yo
 
 - [ ] Light/dark mode 
 - [ ] Animation when a letter is entered 
-- [ ] Sound effect and animation on win 
+- [ ] Sound effect and animation on win/loss
+- [ ] Sound effect on invalid guess 
 - [ ] Filtering out plural words from list of possible secret words, but still allowing those words as guesses (ex: words would be an acceptable guess, but would never be the secret word)
 - [ ] A feature where the user can change the length of the secret word 
 - [ ] A feature to change the number of words a user is trying to guess at a time (ex: trying to guess 4 words simultaneously instead of just 1)
