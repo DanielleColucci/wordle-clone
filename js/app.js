@@ -104,19 +104,22 @@ function updateGuess(key) {
 function handleGuess() {
   if (checkWord(currentGuess.toLowerCase())) {
     acceptingGuess = false
-    updateColors()
-    setTimeout(() => {
-      checkWinner()
-      checkLoss()
-      updateRoundState()
-      render()
-    }, 2000)
+    updateGameState()    
   } else {
     messageEl.textContent = 'Invalid guess!'
     messageEl.style.visibility = 'visible'
     document.getElementById(`row${currentRow + 1}`).style.animationPlayState = 'running'
     setTimeout(() => messageEl.style.visibility = 'hidden', 1000)
     setTimeout(() => document.getElementById(`row${currentRow + 1}`).style.animationPlayState = 'paused', 500)
+  }
+}
+
+async function updateGameState() {
+  const colorsRevealed = await updateColors()
+  if (colorsRevealed) {
+    checkWinner()
+    checkLoss()
+    updateRoundState()
   }
 }
 
@@ -170,15 +173,17 @@ function updateColors() {
   if (sound) gameAudio.playFlip()
   
   let idx = 1
-  setInterval(() => {
-    if (idx <= 4) {
-      sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx], 'flip')
-      if (sound) gameAudio.playFlip()
-      idx++
-    } else {
-      clearInterval()
-    }
-  }, 500)
+  return new Promise(resolve => {
+    setInterval(() => {
+      if (idx <= 4) {
+        sqrEls[currentRow * 5 + idx].classList.add(colorArr[idx], 'flip')
+        if (sound) gameAudio.playFlip()
+        idx++
+      } else {
+        resolve(true)
+      }
+    }, 500)
+  })
 }
 
 function resetColors() {
