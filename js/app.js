@@ -19,7 +19,7 @@ const soundBtnEl = document.getElementById('toggle-sound')
 /*---------------------------- Event Listeners ----------------------------*/
 diffBtnEls.addEventListener('click', chooseDifficulty)
 bodyEl.addEventListener('keydown', handleKeyPress)
-resetBtnEl.addEventListener('click', init)
+resetBtnEl.addEventListener('click', resetGame)
 keyboardEl.addEventListener('click', handleKeyPress)
 soundBtnEl.addEventListener('click', toggleSound)
 
@@ -191,6 +191,15 @@ function updateColors() {
 function resetColors() {
   sqrEls.forEach((sqr) => sqr.className = 'sqr')
   document.querySelectorAll('.key').forEach((key) => key.className = 'key')
+}
+
+function resetGame() {
+  diffBtnEls.style.visibility = 'visible'
+  messageEl.style.visibility = 'visible'
+  messageEl.textContent = 'CHOOSE A DIFFICULTY:'
+  boardEl.style.visibility = 'hidden'
+  keyboardEl.style.visibility = 'hidden'
+  resetBtnEl.style.visibility = 'hidden'
 }
 
 function toggleSound() {
