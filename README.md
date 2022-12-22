@@ -17,6 +17,7 @@ This Wordle clone is a recreation of the game Wordle, popularized on the [New Yo
 
 - Wordle Clone uses keyboard clicking sound found at: [freesound.org](https://freesound.org/people/Mcflarben/sounds/523768/)
 - Wordle Clone uses a card flipping sound found at: [freesound.org](https://freesound.org/people/Splashdust/sounds/84322/)
+- Wordle Clone uses the font Mulish, found at Google Fonts and available at: [GitHub](https://github.com/googlefonts/mulish)
 
 ## Ice Box 
 
