@@ -1,10 +1,10 @@
 # Wordle Clone
 
-![A completed game of wordle with a secret word of "probe" guessed in 3 tries]
+![A completed game of wordle with a secret word of "probe" guessed in 3 tries](https://imgur.com/a/VF1byGY)
 
 This Wordle clone is a recreation of the game Wordle, popularized on the [New York Times](https://www.nytimes.com/games/wordle/index.html). The principle of the game remains the same: the app will generate a secret word, which the user has to guess in six tries or less. This clone allows the player to select a "difficulty" (basic, easy, medium, hard, expert), which determines the rarity of the word's use in the English language. After selecting the difficulty, the user begins inputting words. Upon making a valid guess, the colors will reveal information about the word to the user. If the letter is not in the word, the square will appear grey; if it is in the word but in the incorrect location, the square will appear yellow; and if it is in the word and in the correct location, the square will appear green. Upon a win or loss, the user can again select a difficulty and play another round. 
 
-## [Play the game here] (https://danielle-wordle-clone.netlify.app/)
+## [Play the game here](https://danielle-wordle-clone.netlify.app/)
 
 ## Technologies Used 
 
