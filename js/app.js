@@ -76,13 +76,13 @@ function updateMessage() {
 
 function handleKeyPress(evt) {
   if (acceptingGuess) {
-    const key = evt.type === 'keydown' ? evt.key.toUpperCase() : evt.target.id.toUpperCase()
+    const key = evt.type === 'keydown' ? evt.key.toLowerCase() : evt.target.id
 
-    if ((key.length === 1 && key >= 'A' && key <= 'Z' && currentLetter < 5) || key === 'BACKSPACE') {
+    if ((key.length === 1 && key >= 'a' && key <= 'z' && currentLetter < 5) || key === 'backspace') {
       updateGuess(key)
       if (sound) gameAudio.playClick()
       render()
-    } else if (currentLetter >= 5 && key === 'ENTER') {
+    } else if (currentLetter >= 5 && key === 'enter') {
       if (sound) gameAudio.playClick()
       handleGuess()
     }
@@ -90,19 +90,19 @@ function handleKeyPress(evt) {
 } 
 
 function updateGuess(key) {
-  if (key === 'BACKSPACE') {
+  if (key === 'backspace') {
     currentGuess = currentGuess.slice(0, -1)
     currentLetter = currentLetter > 0 ? --currentLetter : 0
     board[currentRow * 5 + currentLetter] = null
   } else {
     currentGuess += key
-    board[currentRow * 5 + currentLetter] = key
+    board[currentRow * 5 + currentLetter] = key.toUpperCase()
     currentLetter++
   }
 }
 
 function handleGuess() {
-  if (checkWord(currentGuess.toLowerCase())) {
+  if (checkWord(currentGuess)) {
     acceptingGuess = false
     updateGameState()    
   } else {
@@ -125,13 +125,13 @@ async function updateGameState() {
 }
 
 function checkWinner() {
-  if (currentGuess.toLowerCase() === secretWord && currentRow <= 5) {
+  if (currentGuess === secretWord && currentRow <= 5) {
     winner = true
   }
 }
 
 function checkLoss() {
-  if (currentGuess.toLowerCase() !== secretWord && currentRow >= 5) {
+  if (currentGuess !== secretWord && currentRow >= 5) {
     loss = true 
   }
 }
@@ -144,7 +144,7 @@ function updateRoundState() {
 }
 
 function getColorArray() {
-  let lowerGuessArr = currentGuess.toLowerCase().split('')
+  let lowerGuessArr = currentGuess.split('')
   let secretWordArr = secretWord.split('')
   let colorArr = []
   lowerGuessArr.forEach(function(char, idx) {
