@@ -26,7 +26,7 @@ body {
   width: 100%;
 }
 
-#top-banner > p, #toggle-sound {
+#top-banner > div, #toggle-sound {
   background-color: transparent;
   border: none;
   padding: 0;

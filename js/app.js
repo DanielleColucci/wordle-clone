@@ -77,7 +77,8 @@ function updateMessage() {
 function handleKeyPress(evt) {
   if (acceptingGuess) {
     const key = evt.type === 'keydown' ? evt.key.toLowerCase() : evt.target.id
-
+    document.activeElement.blur()
+    
     if ((key.length === 1 && key >= 'a' && key <= 'z' && currentLetter < 5) || key === 'backspace') {
       updateGuess(key)
       if (sound) gameAudio.playClick()
@@ -195,4 +196,5 @@ function resetColors() {
 function toggleSound() {
   sound = sound ? false : true
   soundBtnEl.textContent = sound ? '🔊' : '🔈'
+  document.activeElement.blur()
 }
